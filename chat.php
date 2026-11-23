@@ -11,7 +11,6 @@
             </div>
             <button id="refresh-button" onclick="update_chat_history()">Refresh</button>
             <input type="text" id="chat-input" placeholder="Typ een bericht...">
-            <input type="text" id="key-input" placeholder="Typ de versleuteling...">
             <button id="send-button" onclick="send_message()">Stuur</button>
         </div>
         <div id="key-container">

@@ -1,31 +1,53 @@
 let key = ""; // De ingevoerde sleutel
 
-function encrypt(message,key){
-    // Message en key naar binary
+function encrypt(message, key) {
     let message_binary = new TextEncoder().encode(message);
     let key_binary = new TextEncoder().encode(key);
-    // Voer encryptie uit (XOR)
     let encrypted = [];
-    for(let i = 0; i < message_binary.length; i++){
-        encrypted.push(message_binary[i] ^ key_binary[i % key_binary.length]);
+
+    // Encrypt met XOR
+    for (let i = 0; i < message_binary.length; i++) {
+        if (i === 0) {
+            encrypted.push(message_binary[i]);
+        } else {
+            encrypted.push(message_binary[i] ^ key_binary[(i - 1) % key_binary.length]);
+        }
     }
-    // encrypted naar ascii string
-    encrypted_message = String.fromCharCode.apply(null, encrypted);
-    return encrypted_message;
+
+    // Return encrypted message as hex string
+    return encrypted
+        .map(byte => byte.toString(16).padStart(2, "0"))
+        .join("");
 }
 
-function decrypt(message,key){
-    // Message en key naar binary
-    let message_binary = new TextEncoder().encode(message);
-    let key_binary = new TextEncoder().encode(key);
-    // Voer decryptie uit (XOR)
-    let decrypted = [];
-    for(let i = 0; i < message_binary.length; i++){
-        decrypted.push(message_binary[i] ^ key_binary[i % key_binary.length]);
+function decrypt(encrypted_hex, key) {
+    if (encrypted_hex.length % 2 !== 0) {
+        throw new Error("Ongeldige versleutelde hexstring.");
     }
-    // decrypted naar ascii string
-    decrypted_message = String.fromCharCode.apply(null, decrypted);
-    return decrypted_message;
+    if (!/^[0-9a-fA-F]*$/.test(encrypted_hex)) {
+        throw new Error("Ongeldige versleutelde hexstring.");
+    }
+
+    let key_binary = new TextEncoder().encode(key);
+    let decrypted = [];
+
+    // Decypher met XOR
+    for (let i = 0; i < encrypted_hex.length; i += 2) {
+        let byte = parseInt(encrypted_hex.substr(i, 2), 16);
+        if (Number.isNaN(byte)) {
+            throw new Error("Ongeldige versleutelde hexstring.");
+        }
+
+        let messageIndex = i / 2;
+        if (messageIndex === 0) {
+            decrypted.push(byte);
+        } else {
+            decrypted.push(byte ^ key_binary[(messageIndex - 1) % key_binary.length]);
+        }
+    }
+
+    // Terug als string
+    return String.fromCharCode(...decrypted);
 }
 
 function send_chat(username, message_to_send) {
@@ -91,12 +113,16 @@ function update_chat_history() {
 }
 
 function set_key(){
-    key = document.getElementById("key_input").value;
+    key = document.getElementById("key-input").value;
+}
+
+function get_username(){
+    // Haal username op uit cookie
 }
 
 function send_message(){
-    let username = document.getElementById("username_input").value;
-    let message = document.getElementById("message_input").value;
+    let username = get_username();
+    let message = document.getElementById("chat-input").value;
     let encrypted_message = encrypt(message, key);
     send_chat(username, encrypted_message);
 }
