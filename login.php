@@ -27,7 +27,7 @@ if ($user_data && password_verify($_POST['password'], $user_data['password_hash'
     $_SESSION['social_creddit'] = $user_data['social_creddit'];
 } else {
     // Stuur terug naar index.html als login mislukt
-    header("Location: index.html");
+    header("Location: index.html?error=verkeerde_login");
     exit();
 }
 

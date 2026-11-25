@@ -9,6 +9,11 @@ session_start();
 if( $_SERVER["REQUEST_METHOD"] == "POST") {
     $user = $_POST['new_username'];
     $pass = $_POST['new_password'];
+    if ((empty($user) || empty($pass))|| (strlen($user) < 3 || strlen($pass) < 3)) {
+        // Stuur terug naar index.html als username of password te kort is
+        header("Location: index.html?error=kort");
+        exit();
+    }
 }
 else{
     // Stuur terug naar index.html als niet via form
@@ -31,7 +36,7 @@ if (!$user_data) {
 }
 else {
     // Zo nee, stuur terug naar index.html
-    header("Location: index.html");
+    header("Location: index.html?error=bestaat");
     exit();
 }
 
