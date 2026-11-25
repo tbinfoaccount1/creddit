@@ -5,6 +5,9 @@
     <body>
         <h1>Creddit</h1>
         <p>Met creddit kun je met een geheime sleutel praten met vrienden, zonder dat deze sleutel op het internet terecht komt. Perfect voor als je niemand vertrouwt.</p>
+        <i>Hoe werkt het?</i>
+        <p>We gebruiken een XOR-versleuteling om berichten te versleutelen. In het chat menu zie je alle verstuurde berichten binnenkomen, maar ze zijn versleuteld. Alleen met de juiste sleutel kun je sommige berichten lezen. De andere berichten blijven onleesbaar. De versleuteling en ontcijfering gebeurt in de browser, dus die komt nooit op het internet terecht.</p>
+        <p>Voorbeeld:<br>Persoon 1 stuurt "hallo welkom" met sleutel "test". Via het internet en op de server staat dan "6815091f1b541216181f0a1e". Als persoon 2 de chat leest met sleutel "appel", krijgt hij "htyo~8sfhzf" te zien. Persoon 3, die wel sleutel "test" ingevuld heeft, krijgt weer "hallo welkom" te zien.</p>
         <h2>Inloggen</h2>
         <form action="login.php" method="post">
             <label for="username">Gebruikersnaam:</label>
