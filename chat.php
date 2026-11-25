@@ -1,10 +1,20 @@
+<?php
+// Check session en redirect naar index.html als niet klopt met database
+session_start();
+if (!isset($_SESSION['username'])) {
+    header("Location: index.html");
+    exit();
+}
+?>
+
 <html>
     <head>
         <title>Creddit</title>
     </head>
     <body>
         <h1>Creddit</h1>
-        <p>Welkom bij Creddit!</p>
+        <p>Welkom bij Creddit, <?php echo $_SESSION['username']; ?>!</p>
+        <a href="logout.php">Uitloggen</a>
         <div id="chat-container">
             <div id="chat-history">
 <!-- Hier de chat history, bestaat uit username en message-->
@@ -22,12 +32,3 @@
     <script src="script.js"></script>
     </body>
 </html>
-
-<?php
-// Check cookie en redirect naar index.html als niet klopt met database
-$something = [];
-if(!($something)) {
-    header("Location: index.html");
-    exit();
-}
-?>

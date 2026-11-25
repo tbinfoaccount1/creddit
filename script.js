@@ -102,11 +102,12 @@ function update_chat_history() {
     // Decrypt de messages
     // foreach (message in messages) {
     //     message_split = message.split(":");
-    //     decrypt(message_split[1], key);
-    //     message = message_split[0] + ":" + decrypted_message;
+    //     decrypted_message = decrypt(message_split[1], key);
+    //     decrypted_username = decrypt(message_split[0], key);
+    //     message = decrypted_username + ":" + decrypted_message;
     // }
 
-    // Zet alle messages in html
+    // Zet alle messages en usernames in html
     // foreach (message in messages) {
     //     document.getElementById("een_of_andere_div").innerHTML = message + "<br>";
     // }
@@ -117,7 +118,11 @@ function set_key(){
 }
 
 function get_username(){
+    let username = '';
+
     // Haal username op uit cookie
+
+    return encrypt(username);
 }
 
 function send_message(){
