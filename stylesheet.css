@@ -1,16 +1,197 @@
+/* basisstijl */
 * {
-    background-color: #171526;
-    color: white;
-    font-family:Georgia, 'Times New Roman', Times, serif;
+    box-sizing: border-box;
+    font-family: 'Courier New', Courier, monospace;
+    padding: 0;
+    margin: 0;
+}
+
+body {
+    min-height: 100vh;
+    color: #eeeaf5;
+    background:
+        radial-gradient(ellipse at 50% 0%, rgba(105, 78, 137, 0.32), transparent 55%),
+        linear-gradient(145deg, #11121d 0%, #211c30 52%, #33263f 100%);
+}
+
+#header {
+    width: 100%;
+    min-height: 64px;
+    display: flex;
+    padding: 12px 20px;
+    color: #f4efff;
+    background: rgba(15, 15, 25, 0.72);
+    border-bottom: 1px solid rgba(203, 180, 231, 0.15);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.16);
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 0.95rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+}
+
+#header h1#title {
+    text-align: left;
+    float:left;
+}
+
+h1, h2 {
+    color: #f5f0ff;
+    line-height: 1.2;
+}
+
+h1 {
+    margin: 0 0 12px;
+    font-size: clamp(2rem, 5vw, 2.7rem);
+    text-align: center;
+}
+
+h2 {
+    margin: 32px 0 16px;
+    font-size: 1.4rem;
+}
+
+p {
+    color: #c9c3d4;
+    line-height: 1.7;
+}
+
+.content {
+    min-height: calc(100vh - 128px);
+    height: auto;
+    padding: 36px;
+    color: #eeeaf5;
+    background: rgba(24, 23, 35, 0.88);
+    border: 1px solid rgba(204, 183, 229, 0.16);
+    border-radius: 16px;
+    box-shadow: 0 22px 60px rgba(0, 0, 0, 0.34);
+}
+
+form {
+    max-width: 480px;
+    margin-bottom: 24px;
+}
+
+form br {
+    display: none;
+}
+
+label {
+    display: block;
+    margin: 16px 0 7px;
+    color: #d8d1e4;
+    font-size: 0.95rem;
 }
 
 input {
-    border-radius: 4px;
-    border-color: #A7A;
-    background-color: #272536;
-    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    border: 1px solid #51465f;
+    border-radius: 7px;
+    color: #f7f3fc;
+    background-color: #211f2d;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 1rem;
+    transition: border-color 160ms ease, box-shadow 160ms ease, background-color 160ms ease;
+}
+
+input[type="text"],
+input[type="password"] {
+    width: 90%;
+    padding: 11px 12px;
 }
 
 input:focus {
-    outline:none;
+    outline: none;
+    border-color: #b69ad8;
+    background-color: #282432;
+    box-shadow: 0 0 0 3px rgba(182, 154, 216, 0.2);
+}
+
+input[type="submit"] {
+    margin-top: 20px;
+    padding: 11px 18px;
+    border: 1px solid #a68bc8;
+    color: #fff;
+    background: linear-gradient(135deg, #72558f, #59446f);
+    cursor: pointer;
+    font-weight: 600;
+    transition: transform 160ms ease, filter 160ms ease, box-shadow 160ms ease;
+}
+
+input[type="submit"]:hover {
+    filter: brightness(1.13);
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.25);
+    transform: translateY(-1px);
+}
+
+input[type="submit"]:focus-visible {
+    outline: 2px solid #d5c1ef;
+    outline-offset: 3px;
+}
+
+/* responsiveness */
+
+.row {
+    padding: 32px 0;
+}
+
+[class*="col-"] {
+    width: 100%;
+    float: left;
+    padding: 15px;
+}
+
+.content-desktop {display: block;}
+.content-mobile {display: none;}
+.tekst-desktop {display: block;}
+.tekst-mobile {display: none;}
+
+@media only screen and (min-width: 600px) {
+    .col-s-1 {width: 8.33%;}
+    .col-s-2 {width: 16.66%;}
+    .col-s-3 {width: 25%;}
+    .col-s-4 {width: 33.33%;}
+    .col-s-5 {width: 41.66%;}
+    .col-s-6 {width: 50%;}
+    .col-s-7 {width: 58.33%;}
+    .col-s-8 {width: 66.66%;}
+    .col-s-9 {width: 75%;}
+    .col-s-10 {width: 83.33%;}
+    .col-s-11 {width: 91.66%;}
+    .col-s-12 {width: 100%;}
+    .content-desktop {display: none;}
+    .content-mobile {display: block;}
+    .tekst-desktop {display: none;}
+    .tekst-mobile {display: block;}
+}
+
+@media only screen and (min-width: 900px) {
+    .col-1 {width: 8.33%;}
+    .col-2 {width: 16.66%;}
+    .col-3 {width: 25%;}
+    .col-4 {width: 33.33%;}
+    .col-5 {width: 41.66%;}
+    .col-6 {width: 50%;}
+    .col-7 {width: 58.33%;}
+    .col-8 {width: 66.66%;}
+    .col-9 {width: 75%;}
+    .col-10 {width: 83.33%;}
+    .col-11 {width: 91.66%;}
+    .col-12 {width: 100%;}
+}
+
+@media only screen and (max-width: 599px) {
+    .row {
+        padding: 12px 0;
+    }
+
+    .content {
+        min-height: calc(100vh - 88px);
+        padding: 24px;
+        border-radius: 12px;
+    }
+}
+
+.row::after {
+    content: "";
+    clear: both;
+    display: table;
 }

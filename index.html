@@ -7,23 +7,35 @@
         <link rel="stylesheet" href="stylesheet.css">
     </head>
     <body>
-        <h1>Creddit</h1>
-        <p>Met creddit kun je met een geheime sleutel praten met vrienden, zonder dat deze sleutel op het internet terecht komt. Perfect voor als je niemand vertrouwt.</p>
-        <h2>Inloggen</h2>
-        <form action="login.php" method="post">
-            <label for="username">Gebruikersnaam:</label>
-            <input type="text" id="username" name="username" required><br><br>
-            <label for="password">Wachtwoord:</label>
-            <input type="password" id="password" name="password" required><br><br>
-            <input type="submit" value="Inloggen">
-        </form>
-        <h2>Registreren</h2>
-        <form action="register.php" method="post">
-            <label for="new_username">Gebruikersnaam:</label>
-            <input type="text" id="new_username" name="new_username" required><br><br>
-            <label for="new_password">Wachtwoord:</label>
-            <input type="password" id="new_password" name="new_password" required><br><br>
-            <input type="submit" value="Registreren">
-        </form>
+        <div id="header">
+            <h1 id="title">Creddit</h1>
+        </div>
+        <div class="row">
+            <div class="col-2 col-s-1"></div>
+            <div class="col-8 col-s-10 content">
+                <h1>Creddit</h1>
+                <p>Met creddit kun je met een geheime sleutel praten met vrienden, zonder dat deze sleutel op het internet terecht komt. Perfect voor als je niemand vertrouwt.</p>
+                <br><div class="col-6">
+                    <h2>Inloggen</h2>
+                    <form action="login.php" method="post">
+                        <label for="username">Gebruikersnaam:</label>
+                        <input type="text" id="username" name="username" required><br><br>
+                        <label for="password">Wachtwoord:</label>
+                        <input type="password" id="password" name="password" required><br><br>
+                        <input type="submit" value="Inloggen">
+                    </form>
+                </div>
+                <div class="col-6">
+                    <h2>Registreren</h2>
+                    <form action="register.php" method="post">
+                        <label for="new_username">Gebruikersnaam:</label>
+                        <input type="text" id="new_username" name="new_username" required><br><br>
+                        <label for="new_password">Wachtwoord:</label>
+                        <input type="password" id="new_password" name="new_password" required><br><br>
+                        <input type="submit" value="Registreren">
+                    </form>
+                </div>
+            </div>
+        </div>
     </body>
 </html>
