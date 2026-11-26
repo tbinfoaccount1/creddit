@@ -1,15 +1,22 @@
-<!DOCTYPE html>
-<html lang="nl">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Creddit</title>
-</head>
-<body>
-    <h1>Creddit</h1>
-    <p>Welkom bij Creddit!</p>
-    <div id="chat-container">
-        <div id="chat-history">
+<?php
+// Check session en redirect naar index.html als niet klopt met database
+session_start();
+if (!isset($_SESSION['username'])) {
+    header("Location: index.html");
+    exit();
+}
+?>
+
+<html>
+    <head>
+        <title>Creddit</title>
+    </head>
+    <body>
+        <h1>Creddit</h1>
+        <p>Welkom bij Creddit, <?php echo $_SESSION['username']; ?>!</p>
+        <a href="logout.php">Uitloggen</a>
+        <div id="chat-container">
+            <div id="chat-history">
 <!-- Hier de chat history, bestaat uit username en message-->
         </div>
         <button id="refresh-button" onclick="update_chat_history()">Refresh</button>
@@ -25,12 +32,3 @@
     <script src="script.js"></script>
 </body>
 </html>
-
-<?php
-// Check cookie en redirect naar index.html als niet klopt met database
-$something = [];
-if(!($something)) {
-    header("Location: index.html");
-    exit();
-}
-?>
